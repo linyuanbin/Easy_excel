@@ -1,0 +1,52 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:task="http://www.springframework.org/schema/task"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+		http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+		http://www.springframework.org/schema/mvc
+		http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd
+		http://www.springframework.org/schema/context
+		http://www.springframework.org/schema/context/spring-context-4.0.xsd
+		http://www.springframework.org/schema/aop
+		http://www.springframework.org/schema/aop/spring-aop-4.0.xsd
+		http://www.springframework.org/schema/tx
+		http://www.springframework.org/schema/tx/spring-tx-4.0.xsd
+		http://www.springframework.org/schema/task
+   		http://www.springframework.org/schema/task/spring-task-4.0.xsd">
+
+    <!--springmvc 三个基本点-->
+
+    <!-- 扫描 @Contr -->
+    <context:component-scan base-package="com.lin.core.shop.controller" />
+
+    <!-- 处理器 映射器  适配器 -->
+    <mvc:annotation-driven conversion-service="conversionService"/> <!--绑定conversionService才能生效-->
+    <!-- 视图解释器 jsp -->
+    <bean id="jspViewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <property name="prefix" value="/WEB-INF/user/"/>
+        <property name="suffix" value=".jsp"/>
+    </bean>
+
+    <!--配置 converter 转换器工厂  在登录是判断传入的用户名和密码是否空值-->
+    <bean id="conversionService" class="org.springframework.format.support.FormattingConversionServiceFactoryBean">
+    <!--日期-->
+    <!--去掉前后空格-->
+    <!--<property name="converters">
+        <list>
+            &lt;!&ndash;自定义的转换类&ndash;&gt;
+            <bean class="com.lyb.common.converter.CustomConverter"></bean>
+        </list>
+    </property>-->
+</bean>
+
+    <!-- 图片上传 -->
+    <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+        <property name="defaultEncoding" value="UTF-8" />
+        <property name="maxUploadSize" value="5242880" />
+    </bean>
+
+
+</beans>

@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<excels>
+    <!-- excel标签参看:ExcelDefinition,Field标签参看:FieldValue -->
+
+    <!-- 测试使用 ,学生类-->
+    <excel id="student" class="com.lin.core.shop.bean.User"
+           sheetname="测试学生列表" enableStyle="true" defaultAlign="center" sheetIndex="0">
+        <field name="id" title="ID"/>
+        <field name="username" title="学生姓名"/>
+        <field name="email" title="邮箱" />
+        <field name="password" title="密码" />
+        <field name="state" title="状态" regex="^[1-9]\d*$"/>
+        <field name="code" title="编码"/>
+        <!-- 创建人,可能需要查询数据库校验,这里使用自定义解析器 -->
+        <!--<field name="code" title="创建人"
+               cellValueConverter="org.easy.excel.test.converter.CreateUserCellValueConverter" otherConfig="Test动态传递的一个变量"/>
+-->
+        <!-- 复杂对象 -->
+       <!-- <field name="book.bookName" title="图书名称" columnWidth="6000"/>
+        <field name="book.price" title="图书价格" columnWidth="6000" decimalFormatPattern="###,##0.00" roundingMode="up" defaultValue="0.00"/>
+        <field name="book.author.authorName" title="作者名称" columnWidth="6000"/>-->
+    </excel>
+
+    <excel id="city" class="com.lin.core.shop.bean.CityCodeMapping"
+           sheetname="城市列表" enableStyle="true" defaultAlign="center" sheetIndex="0">
+        <field name="areaid" title="区域ID"/>
+        <field name="areacode" title="区域编码" titleFountColor="red" titleBgColor="dark_blue"/>
+        <field name="areaname" title="区域名称" />
+        <field name="level" title="等级" />
+        <field name="citycode" title="城市编码" />
+        <field name="center" title="经纬度"/>
+        <field name="parentid" title="父级ID"/>
+    </excel>
+<!--
+
+    <excel id="student2" class="org.easy.excel.test.model.StudentModel">
+        <field name="id" title="ID"/>
+        <field name="name" title="学生姓名"/>
+        <field name="age" title="年龄" isNull="false" regex="^[1-9]\d*$" regexErrMsg="必须是数字"/>
+        <field name="studentNo" title="学号" isNull="false" />
+        <field name="createTime" title="创建时间" pattern="yyyy-MM-dd"/>
+        <field name="status" title="状态" format="1:正常,0:禁用,-1:无效" />
+        <field name="createUser" title="创建人"/>
+        &lt;!&ndash; 复杂对象 &ndash;&gt;
+        <field name="book.bookName" title="图书名称" />
+        <field name="book.author.authorName" title="作者名称" isNull="false"/>
+    </excel>
+    &lt;!&ndash; ExcelXmlBuilder 生成的配置文件 &ndash;&gt;
+    <excel id="student3" class="org.easy.excel.test.model.StudentModel" sheetname="学生信息列表" defaultColumnWidth="5000" enableStyle="true">
+        <field name="id" title="id" isNull="true" uniformStyle="true" columnWidth="5000" align="left" regex="" regexErrMsg="id不合法"/>
+        <field name="createTime" title="createTime" pattern="yyyy/MM/dd" isNull="true" uniformStyle="true" columnWidth="5000" align="left" regex="" regexErrMsg="createTime不合法"/>
+        <field name="name" title="name" isNull="true" uniformStyle="true" columnWidth="5000" align="left" regex="" regexErrMsg="name不合法"/>
+        <field name="age" title="age" isNull="true" uniformStyle="true" columnWidth="5000" align="left" regex="" regexErrMsg="age不合法"/>
+        <field name="studentNo" title="studentNo" isNull="true" uniformStyle="true" columnWidth="5000" align="left" regex="" regexErrMsg="studentNo不合法"/>
+        <field name="createUser" title="createUser" isNull="true" uniformStyle="true" columnWidth="5000" align="left" regex="" regexErrMsg="createUser不合法"/>
+        <field name="createUserId" title="createUserId" isNull="true" uniformStyle="true" columnWidth="5000" align="left" regex="" regexErrMsg="createUserId不合法"/>
+        <field name="status" title="status" isNull="true" uniformStyle="true" columnWidth="5000" align="left" regex="" regexErrMsg="status不合法"/>
+        <field name="book.bookName" title="book.bookName" isNull="true" uniformStyle="true" columnWidth="5000" align="left" regex="" regexErrMsg="book.bookName不合法"/>
+        <field name="book.author.authorName" title="book.author.authorName" isNull="true" uniformStyle="true" columnWidth="5000" align="left" regex="" regexErrMsg="book.author.authorName不合法"/>
+    </excel>
+
+-->
+
+
+</excels>
